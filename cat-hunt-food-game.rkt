@@ -1,7 +1,6 @@
 ;; The first three lines of this file were inserted by DrRacket. They record metadata
 ;; about the language level of this file in a form that our tools can easily process.
 #reader(lib "htdp-beginner-reader.ss" "lang")((modname cat-hunt-food-game) (read-case-sensitive #t) (teachpacks ()) (htdp-settings #(#t constructor repeating-decimal #f #t none #f () #f)))
-
 (require 2htdp/image)
 (require 2htdp/universe)
 
@@ -46,33 +45,10 @@
                                     "leave")))
 ; interp. mouse events, e.g., mouse movements or mouse clicks
 
-
-; +++++++ Schritt 1 +++++++++
-
-; Auch hier verstehe ich die Aufgabe so, dass einfach ein Wert der die Signatur erfüllt
-; angegeben werden soll:
-
-; Beispiel für Speed:
-0 ; kein Speed
-10 ; 10 pixels per tick
-
-; Beispiel Location:
-(make-posn 20 20)
-
-; beispiel WorldStateSig:
-(make-world-state 10 (make-posn 20 20) (make-posn 25 30) 0 0 #f)
-
-; Beispiel für MouseEvent
-"button-down"
-
-
-; ++++++++++ Schritt 2 +++++++++
-
 ; ---------------------------- Konstanten -------------------------------------------
 
-; Bildquellen:
-; Alle Bilder wurden am 24.11.23 mit OpenAI's DALL·E speziell für
-; die verwendung des Assignment 6 Aufgabe 2 erstellt.
+; image sources:
+; all pictures were genereated by OpenAI's DALL·E specifically for this game between 24.11-26.11.23
 
 (define CATimg
   (bitmap "images/DALL·E_2023-11-24_16.25.06-Calm-Cat.png"))
@@ -126,7 +102,7 @@
 (define MTCN
   (empty-scene WIDTH HEIGHT))
 
-; +++++++++++++++++++++++ Helper Funktionen ++++++++++++++++++++++++++++++++++++++++++++++++++++
+; +++++++++++++++++++++++ helper functions ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ; -------------------------------- Canvas draw --------------------------------
 
@@ -223,7 +199,7 @@
   (/ (calcYdirection worldInstnc) (vectorLength worldInstnc)))
 
 (: rotateCalc (WorldStateSig -> Orientation))
-; rotation der Katze abhähnig von Vektorrichtung durch arctan -> Winkel = arctan(x, y) * 180 / pi
+; totation of cat depends on vectordirection. calculated via arctan -> Winkel = arctan(x, y) * 180 / pi
 (define (rotateCalc worldInstnc)
   (+ (* (atan (unitValueX worldInstnc) (unitValueY worldInstnc)) (/ 180 pi)) 180))
 
@@ -256,9 +232,6 @@
 
 
 ; +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-; Wunschliste
-; -----------
 
 (: INITIAL-STATE WorldStateSig)
 ; An initial state we can start the game with
