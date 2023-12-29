@@ -380,7 +380,7 @@
                      CAT_WONimg)
               MTCN)]))
 
-; ----------------------------------
+; ------------- big-bang function -------------
   
 
 (: cat-game (WorldStateSig -> WorldStateSig))
